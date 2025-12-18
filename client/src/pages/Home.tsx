@@ -65,7 +65,7 @@ export default function Home() {
               確実な成長と信頼できるパートナーシップを提供します。
             </p>
             
-            <div className="flex items-center text-primary font-bold tracking-wide group-hover:translate-x-2 transition-transform duration-300">
+            <div className="flex items-center text-primary font-bold tracking-wide group-hover:translate-x-2 transition-transform duration-300" style={{paddingBottom: '29px'}}>
               Explore Opportunities <ArrowRight className="ml-2 w-5 h-5" />
             </div>
           </motion.div>
