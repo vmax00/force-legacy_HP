@@ -16,18 +16,18 @@ export default function Footer() {
           <div>
             <h3 className="font-heading font-semibold mb-6 text-accent">Menu</h3>
             <ul className="space-y-4">
-              <li><Link href="/startup"><a className="text-primary-foreground/70 hover:text-white transition-colors">For Startups</a></Link></li>
-              <li><Link href="/investor"><a className="text-primary-foreground/70 hover:text-white transition-colors">For Investors</a></Link></li>
-              <li><Link href="/process"><a className="text-primary-foreground/70 hover:text-white transition-colors">Matching Process</a></Link></li>
-              <li><Link href="/about"><a className="text-primary-foreground/70 hover:text-white transition-colors">About Us</a></Link></li>
+              <li><Link href="/startup" className="text-primary-foreground/70 hover:text-white transition-colors">For Startups</Link></li>
+              <li><Link href="/investor" className="text-primary-foreground/70 hover:text-white transition-colors">For Investors</Link></li>
+              <li><Link href="/process" className="text-primary-foreground/70 hover:text-white transition-colors">Matching Process</Link></li>
+              <li><Link href="/about" className="text-primary-foreground/70 hover:text-white transition-colors">About Us</Link></li>
             </ul>
           </div>
           
           <div>
             <h3 className="font-heading font-semibold mb-6 text-accent">Contact</h3>
             <ul className="space-y-4">
-              <li><Link href="/contact"><a className="text-primary-foreground/70 hover:text-white transition-colors">Contact Form</a></Link></li>
-              <li><Link href="/faq"><a className="text-primary-foreground/70 hover:text-white transition-colors">FAQ</a></Link></li>
+              <li><Link href="/contact" className="text-primary-foreground/70 hover:text-white transition-colors">Contact Form</Link></li>
+              <li><Link href="/faq" className="text-primary-foreground/70 hover:text-white transition-colors">FAQ</Link></li>
               <li className="text-primary-foreground/50 text-sm mt-8">
                 Tokyo, Japan<br />
                 info@forcelegacy.com

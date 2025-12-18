@@ -29,28 +29,28 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: EASE_OUT }}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/">
-          <a className="text-2xl font-heading font-bold tracking-tighter text-primary">
-            FORCE LEGACY
-          </a>
+        <Link href="/" className="text-2xl font-heading font-bold tracking-tighter text-primary">
+          FORCE LEGACY
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link key={link.href} href={link.href}>
-              <a className={cn(
+            <Link 
+              key={link.href} 
+              href={link.href}
+              className={cn(
                 "text-sm font-medium transition-colors hover:text-primary relative group",
                 location === link.href ? "text-primary" : "text-muted-foreground"
-              )}>
-                {link.label}
-                {location === link.href && (
-                  <motion.div 
-                    layoutId="underline"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent"
-                  />
-                )}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full opacity-0 group-hover:opacity-100" />
-              </a>
+              )}
+            >
+              {link.label}
+              {location === link.href && (
+                <motion.div 
+                  layoutId="underline"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent"
+                />
+              )}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full opacity-0 group-hover:opacity-100" />
             </Link>
           ))}
         </nav>
