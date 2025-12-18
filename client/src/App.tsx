@@ -1,38 +1,51 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-
+import StartupLP from "./pages/StartupLP";
+import InvestorLP from "./pages/InvestorLP";
+import { ProcessPage, AboutPage, FAQPage, ContactPage } from "./pages/AdditionalPages";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { AnimatePresence } from "framer-motion";
 
 function Router() {
+  const [location] = useLocation();
+  
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <AnimatePresence mode="wait">
+      <Switch location={location} key={location}>
+        <Route path={"/"} component={Home} />
+        <Route path={"/startup"} component={StartupLP} />
+        <Route path={"/investor"} component={InvestorLP} />
+        <Route path={"/process"} component={ProcessPage} />
+        <Route path={"/about"} component={AboutPage} />
+        <Route path={"/faq"} component={FAQPage} />
+        <Route path={"/contact"} component={ContactPage} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    </AnimatePresence>
   );
 }
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <div className="min-h-screen flex flex-col font-body bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
+            <Navbar />
+            <main className="flex-grow">
+              <Router />
+            </main>
+            <Footer />
+          </div>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
