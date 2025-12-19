@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { pageTransition, fadeInUp, staggerContainer, EASE_OUT, DURATION, DISTANCE } from "@/lib/motion";
 import MotionInView from "@/components/MotionInView";
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,10 @@ const PageLayout = ({ title, subtitle, children }: { title: string, subtitle: st
 );
 
 export function ProcessPage() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const steps = [
     { title: "Application", desc: "オンラインフォームより、事業計画書とピッチデックをご提出ください。" },
     { title: "Screening", desc: "専門チームによる書類審査と、初回面談を実施します。" },
@@ -61,7 +66,7 @@ export function ProcessPage() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1, ease: EASE_OUT }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: false, amount: 0.3 }}
           >
             <motion.div 
               className="relative"
