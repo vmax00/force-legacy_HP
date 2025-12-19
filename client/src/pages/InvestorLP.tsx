@@ -44,47 +44,47 @@ export default function InvestorLP() {
             alt="Investor Vision" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-l from-background/90 via-background/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-transparent" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 flex justify-end">
-          <div className="max-w-2xl text-right">
-            <MotionInView intensity="low" direction="horizontal" delay={0.2}>
-              <span className="inline-block py-1 px-3 border border-secondary/20 rounded-full text-xs font-bold tracking-widest uppercase text-secondary mb-6 bg-white/50 backdrop-blur-sm">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-2xl">
+            <MotionInView intensity="medium" direction="horizontal" delay={0.2}>
+              <span className="inline-block py-1 px-3 border border-primary/20 rounded-full text-xs font-bold tracking-widest uppercase text-primary mb-6 bg-white/50 backdrop-blur-sm">
                 For Investors
               </span>
             </MotionInView>
             
-            <MotionInView intensity="low" direction="horizontal" delay={0.3}>
-              <h1 className="text-5xl md:text-7xl font-heading font-bold text-secondary mb-6 leading-tight">
+            <MotionInView intensity="medium" direction="horizontal" delay={0.3}>
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-primary mb-6 leading-tight">
                 Curated <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-l from-secondary to-slate-600">Excellence</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Excellence</span>
               </h1>
             </MotionInView>
             
-            <MotionInView intensity="low" direction="horizontal" delay={0.4}>
-              <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg ml-auto">
+            <MotionInView intensity="medium" direction="horizontal" delay={0.4}>
+              <p className="text-xl text-muted-foreground mb-10 leading-relaxed max-w-lg">
                 厳選されたスタートアップへの投資機会を通じて、
                 持続可能なリターンと未来への貢献を両立させます。
                 Force Legacyは、あなたのポートフォリオに確かな価値を加えます。
               </p>
             </MotionInView>
             
-            <MotionInView intensity="low" direction="horizontal" delay={0.5}>
-              <div className="flex flex-wrap gap-4 justify-end">
-                <motion.div
-                  whileHover={{ scale: 1.05, x: -8 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
-                    Join Network <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </motion.div>
+            <MotionInView intensity="medium" direction="horizontal" delay={0.5}>
+              <div className="flex flex-wrap gap-4">
                 <motion.div
                   whileHover={{ scale: 1.05, x: 8 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Button variant="outline" size="lg" className="border-secondary text-secondary hover:bg-secondary/5 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
+                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
+                    Join Network <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05, x: -8 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
                     Investment Thesis
                   </Button>
                 </motion.div>
