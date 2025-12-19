@@ -1,8 +1,31 @@
 import { motion } from "framer-motion";
-import { pageTransition, motionIntensity, staggerContainer, fadeInUp, fadeInLeft } from "@/lib/motion";
+import { pageTransition, motionIntensity, staggerContainer, fadeInUp, fadeInLeft, EASE_OUT, DURATION, DISTANCE } from "@/lib/motion";
 import MotionInView from "@/components/MotionInView";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Rocket, TrendingUp, ShieldCheck } from "lucide-react";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: DISTANCE.MEDIUM },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: DURATION.MEDIUM,
+      ease: EASE_OUT,
+    },
+  },
+};
 
 export default function StartupLP() {
   return (
@@ -49,12 +72,22 @@ export default function StartupLP() {
             
             <MotionInView intensity="medium" direction="horizontal" delay={0.5}>
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
-                  Apply for Funding <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
-                  View Portfolio
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.05, x: 8 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
+                    Apply for Funding <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05, x: -8 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/5 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
+                    View Portfolio
+                  </Button>
+                </motion.div>
               </div>
             </MotionInView>
           </div>
@@ -66,54 +99,66 @@ export default function StartupLP() {
         <div className="container mx-auto px-4">
           <MotionInView intensity="medium" direction="vertical" className="mb-16">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Why Force Legacy?</h2>
-            <div className="w-24 h-1 bg-accent" />
+            <motion.div 
+              className="w-24 h-1 bg-accent"
+              initial={{ width: 0 }}
+              whileInView={{ width: 96 }}
+              transition={{ duration: 0.8, ease: EASE_OUT }}
+              viewport={{ once: true }}
+            />
           </MotionInView>
 
           <motion.div 
-            variants={staggerContainer}
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-12"
           >
-            <MotionInView variants={fadeInUp} intensity="medium">
-              <div className="p-8 border border-border bg-card hover:shadow-lg transition-shadow duration-300 h-full">
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 text-primary">
-                  <Rocket className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-heading font-bold mb-4">Strategic Growth</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  単なる資金提供だけでなく、事業戦略の策定から実行まで、
-                  経験豊富なチームが伴走支援します。
-                </p>
-              </div>
-            </MotionInView>
-
-            <MotionInView variants={fadeInUp} intensity="medium">
-              <div className="p-8 border border-border bg-card hover:shadow-lg transition-shadow duration-300 h-full">
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 text-primary">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-heading font-bold mb-4">Trusted Network</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  厳選された投資家ネットワークとのマッチングにより、
-                  質の高い資金調達と事業提携を実現します。
-                </p>
-              </div>
-            </MotionInView>
-
-            <MotionInView variants={fadeInUp} intensity="medium">
-              <div className="p-8 border border-border bg-card hover:shadow-lg transition-shadow duration-300 h-full">
-                <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 text-primary">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-heading font-bold mb-4">Long-term Partnership</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  短期的な利益だけでなく、長期的な企業価値の向上を目指し、
-                  Exit後も続く強固な関係を築きます。
-                </p>
-              </div>
-            </MotionInView>
+            {[
+              {
+                icon: Rocket,
+                title: "Strategic Growth",
+                desc: "単なる資金提供だけでなく、事業戦略の策定から実行まで、経験豊富なチームが伴走支援します。",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Trusted Network",
+                desc: "厳選された投資家ネットワークとのマッチングにより、質の高い資金調達と事業提携を実現します。",
+              },
+              {
+                icon: TrendingUp,
+                title: "Long-term Partnership",
+                desc: "短期的な利益だけでなく、長期的な企業価値の向上を目指し、Exit後も続く強固な関係を築きます。",
+              },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="p-8 border border-border bg-card hover:shadow-lg transition-shadow duration-300 h-full group overflow-hidden relative"
+                  whileHover={{ y: -8 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
+                  <div className="relative z-10">
+                    <motion.div 
+                      className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-6 text-primary rounded-lg"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </motion.div>
+                    <h3 className="text-xl font-heading font-bold mb-4">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
@@ -125,26 +170,37 @@ export default function StartupLP() {
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
             {[
               { label: "Total Investment", value: "$50M+" },
               { label: "Startups Supported", value: "120+" },
               { label: "Successful Exits", value: "15" },
               { label: "Active Mentors", value: "40+" },
             ].map((stat, index) => (
-              <MotionInView 
-                key={index} 
-                intensity="medium" 
-                delay={index * 0.1} 
-                direction="vertical"
+              <motion.div 
+                key={index}
+                variants={itemVariants}
+                className="p-6 group hover:scale-105 transition-transform duration-300"
               >
-                <div className="p-6">
-                  <div className="text-4xl md:text-5xl font-heading font-bold text-accent mb-2">{stat.value}</div>
-                  <div className="text-sm uppercase tracking-widest opacity-80">{stat.label}</div>
-                </div>
-              </MotionInView>
+                <motion.div 
+                  className="text-4xl md:text-5xl font-heading font-bold text-accent mb-2"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {stat.value}
+                </motion.div>
+                <div className="text-sm uppercase tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">{stat.label}</div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -159,9 +215,14 @@ export default function StartupLP() {
               あなたの挑戦を待っています。まずは簡単なフォームから、
               私たちのパートナーシップを始めましょう。
             </p>
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 h-16 text-xl font-bold tracking-wide shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-              Start Application
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-none px-10 h-16 text-xl font-bold tracking-wide shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
+                Start Application
+              </Button>
+            </motion.div>
           </MotionInView>
         </div>
       </section>

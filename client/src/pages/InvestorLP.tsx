@@ -1,8 +1,31 @@
 import { motion } from "framer-motion";
-import { pageTransition, motionIntensity, staggerContainer, fadeInUp, fadeInLeft } from "@/lib/motion";
+import { pageTransition, motionIntensity, staggerContainer, fadeInUp, fadeInLeft, EASE_OUT, DURATION, DISTANCE } from "@/lib/motion";
 import MotionInView from "@/components/MotionInView";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, PieChart, Globe, Lock } from "lucide-react";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -DISTANCE.MEDIUM },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: DURATION.FAST,
+      ease: EASE_OUT,
+    },
+  },
+};
 
 export default function InvestorLP() {
   return (
@@ -49,12 +72,22 @@ export default function InvestorLP() {
             
             <MotionInView intensity="low" direction="horizontal" delay={0.5}>
               <div className="flex flex-wrap gap-4 justify-end">
-                <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
-                  Join Network <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-                <Button variant="outline" size="lg" className="border-secondary text-secondary hover:bg-secondary/5 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
-                  Investment Thesis
-                </Button>
+                <motion.div
+                  whileHover={{ scale: 1.05, x: -8 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
+                    Join Network <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05, x: 8 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button variant="outline" size="lg" className="border-secondary text-secondary hover:bg-secondary/5 rounded-none px-8 h-14 text-lg font-bold tracking-wide">
+                    Investment Thesis
+                  </Button>
+                </motion.div>
               </div>
             </MotionInView>
           </div>
@@ -67,17 +100,24 @@ export default function InvestorLP() {
           <div className="flex flex-col md:flex-row gap-16 items-center">
             <div className="md:w-1/2">
               <MotionInView intensity="low" direction="horizontal">
-                <img 
+                <motion.img 
                   src="/images/hero-main.png" 
                   alt="Philosophy" 
                   className="w-full h-auto shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+                  whileHover={{ scale: 1.02 }}
                 />
               </MotionInView>
             </div>
             <div className="md:w-1/2">
               <MotionInView intensity="low" direction="vertical" className="mb-8">
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-secondary mb-4">Our Philosophy</h2>
-                <div className="w-24 h-1 bg-secondary" />
+                <motion.div 
+                  className="w-24 h-1 bg-secondary"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 96 }}
+                  transition={{ duration: 0.8, ease: EASE_OUT }}
+                  viewport={{ once: true }}
+                />
               </MotionInView>
               
               <MotionInView intensity="low" direction="vertical" delay={0.1}>
@@ -100,44 +140,55 @@ export default function InvestorLP() {
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">
           <motion.div 
-            variants={staggerContainer}
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            <MotionInView variants={fadeInUp} intensity="low">
-              <div className="bg-white p-10 shadow-sm border-t-4 border-secondary h-full">
-                <PieChart className="w-10 h-10 text-secondary mb-6" />
-                <h3 className="text-xl font-heading font-bold text-secondary mb-4">Diversified Portfolio</h3>
-                <p className="text-muted-foreground">
-                  FinTech, DeepTech, SaaSなど、成長性の高いセクターに分散投資し、
-                  リスクを最小限に抑えながらリターンを最大化します。
-                </p>
-              </div>
-            </MotionInView>
-
-            <MotionInView variants={fadeInUp} intensity="low">
-              <div className="bg-white p-10 shadow-sm border-t-4 border-secondary h-full">
-                <Lock className="w-10 h-10 text-secondary mb-6" />
-                <h3 className="text-xl font-heading font-bold text-secondary mb-4">Rigorous Due Diligence</h3>
-                <p className="text-muted-foreground">
-                  財務、法務、技術、市場性のあらゆる側面から厳格な審査を行い、
-                  確かな信頼性を持つ案件のみをご紹介します。
-                </p>
-              </div>
-            </MotionInView>
-
-            <MotionInView variants={fadeInUp} intensity="low">
-              <div className="bg-white p-10 shadow-sm border-t-4 border-secondary h-full">
-                <Globe className="w-10 h-10 text-secondary mb-6" />
-                <h3 className="text-xl font-heading font-bold text-secondary mb-4">Global Access</h3>
-                <p className="text-muted-foreground">
-                  国内だけでなく、シリコンバレーやアジアの有望なスタートアップへの
-                  アクセスを提供し、グローバルな投資機会を創出します。
-                </p>
-              </div>
-            </MotionInView>
+            {[
+              {
+                icon: PieChart,
+                title: "Diversified Portfolio",
+                desc: "FinTech, DeepTech, SaaSなど、成長性の高いセクターに分散投資し、リスクを最小限に抑えながらリターンを最大化します。",
+              },
+              {
+                icon: Lock,
+                title: "Rigorous Due Diligence",
+                desc: "財務、法務、技術、市場性のあらゆる側面から厳格な審査を行い、確かな信頼性を持つ案件のみをご紹介します。",
+              },
+              {
+                icon: Globe,
+                title: "Global Access",
+                desc: "国内だけでなく、シリコンバレーやアジアの有望なスタートアップへのアクセスを提供し、グローバルな投資機会を創出します。",
+              },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="bg-white p-10 shadow-sm border-t-4 border-secondary h-full group overflow-hidden relative"
+                  whileHover={{ y: -4 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-b from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
+                  <div className="relative z-10">
+                    <motion.div
+                      whileHover={{ scale: 1.15, rotate: -5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Icon className="w-10 h-10 text-secondary mb-6" />
+                    </motion.div>
+                    <h3 className="text-xl font-heading font-bold text-secondary mb-4">{item.title}</h3>
+                    <p className="text-muted-foreground">{item.desc}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
@@ -157,9 +208,14 @@ export default function InvestorLP() {
               限定された投資家コミュニティへの招待制となっております。
               詳細についてはお問い合わせください。
             </p>
-            <Button size="lg" className="bg-white text-secondary hover:bg-white/90 rounded-none px-10 h-16 text-xl font-bold tracking-wide shadow-xl">
-              Request Access
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" className="bg-white text-secondary hover:bg-white/90 rounded-none px-10 h-16 text-xl font-bold tracking-wide shadow-xl">
+                Request Access
+              </Button>
+            </motion.div>
           </MotionInView>
         </div>
       </section>
