@@ -56,7 +56,13 @@ export function ProcessPage() {
     <PageLayout title="Matching Process" subtitle="透明性の高いプロセスで、最適なパートナーシップを実現します。">
       <div className="relative border-l-2 border-border ml-4 md:ml-0 pl-8 md:pl-12 space-y-12">
         {steps.map((step, index) => (
-          <MotionInView key={index} intensity="medium" delay={index * 0.1} direction="horizontal">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1, ease: EASE_OUT }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <motion.div 
               className="relative"
               whileHover={{ x: 8 }}
@@ -74,7 +80,7 @@ export function ProcessPage() {
               </h3>
               <p className="text-muted-foreground leading-relaxed">{step.desc}</p>
             </motion.div>
-          </MotionInView>
+          </motion.div>
         ))}
       </div>
     </PageLayout>
