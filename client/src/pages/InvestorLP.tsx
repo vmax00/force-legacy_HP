@@ -40,7 +40,7 @@ export default function InvestorLP() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/hero-investor.png" 
+            src="/images/hero-investor-v2.png" 
             alt="Investor Vision" 
             className="w-full h-full object-cover"
           />
