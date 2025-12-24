@@ -40,7 +40,7 @@ export default function StartupLP() {
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/hero-startup-v2.png" 
+            src="/images/hero-startup.png" 
             alt="Startup Growth" 
             className="w-full h-full object-cover"
           />
