@@ -141,9 +141,13 @@ export default function Home() {
 
           <div className="max-w-3xl">
             <MotionInView intensity="medium" direction="horizontal" delay={0.2}>
-              <span className="inline-block py-1 px-3 border border-primary/20 rounded-full text-xs font-bold tracking-widest uppercase text-primary mb-6 bg-white/50 backdrop-blur-sm">
-                Force Legacy
-              </span>
+              <div className="mb-6">
+                <img 
+                  src="/images/logo.jpg" 
+                  alt="Force Legacy Logo" 
+                  className="h-24 md:h-32 w-auto"
+                />
+              </div>
             </MotionInView>
             
             <MotionInView intensity="medium" direction="horizontal" delay={0.3}>
