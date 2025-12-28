@@ -147,7 +147,7 @@ export function AboutPage() {
             {[
               { label: "Company Name", value: "Force Legacy Inc." },
               { label: "Established", value: "April 1, 2024" },
-              { label: "Headquarters", value: "1-1-1 Otemachi, Chiyoda-ku, Tokyo" },
+              { label: "Headquarters", value: "東京都中央区日本橋箱崎町1-11" },
               { label: "CEO", value: "Taro Yamada" },
               { label: "Business", value: "Startup Investment Matching, Business Consulting" },
             ].map((item, index) => (
