@@ -49,16 +49,6 @@ export default function InvestorLP() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-2xl">
-            <MotionInView intensity="medium" direction="horizontal" delay={0.1}>
-              <div className="mb-8">
-                <img 
-                  src="/images/logo.jpg" 
-                  alt="Force Legacy Logo" 
-                  className="h-20 md:h-24 w-auto"
-                />
-              </div>
-            </MotionInView>
-            
             <MotionInView intensity="medium" direction="horizontal" delay={0.2}>
               <span className="inline-block py-1 px-3 border border-primary/20 rounded-full text-xs font-bold tracking-widest uppercase text-primary mb-6 bg-white/50 backdrop-blur-sm">
                 For Investors
