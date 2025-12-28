@@ -244,8 +244,8 @@ export function ContactPage() {
             >
               {[
                 { icon: Mail, text: "info@forcelegacy.com" },
-                { icon: Phone, text: "03-1234-5678" },
-                { icon: MapPin, text: "Tokyo, Japan" },
+                { icon: Phone, text: "03-6206-0540" },
+                { icon: MapPin, text: "東京都中央区日本橋箱崎町1-11" },
               ].map((item, index) => {
                 const Icon = item.icon;
                 return (
