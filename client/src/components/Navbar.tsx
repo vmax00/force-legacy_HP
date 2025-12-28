@@ -38,8 +38,12 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: EASE_OUT }}
     >
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-heading font-bold tracking-tighter text-primary" onClick={handleNavClick}>
-          FORCE LEGACY
+        <Link href="/" className="flex items-center" onClick={handleNavClick}>
+          <img 
+            src="/images/logo.jpg" 
+            alt="Force Legacy Logo" 
+            className="h-16 w-auto"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
