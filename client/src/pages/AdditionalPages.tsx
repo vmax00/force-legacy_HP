@@ -21,7 +21,7 @@ const PageLayout = ({ title, subtitle, children }: { title: string, subtitle: st
       <div className="max-w-4xl mx-auto">
         <MotionInView intensity="medium" direction="vertical" className="mb-16 text-center">
           <motion.h1 
-            className="text-4xl md:text-6xl font-heading font-bold text-primary mb-6"
+            className="text-4xl md:text-6xl font-heading font-bold text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: DURATION.MEDIUM, ease: EASE_OUT }}
@@ -148,7 +148,7 @@ export function AboutPage() {
               { label: "Company Name", value: "Force Legacy Inc." },
               { label: "Established", value: "April 1, 2024" },
               { label: "Headquarters", value: "東京都中央区日本橋箱崎町1-11" },
-              { label: "CEO", value: "Taro Yamada" },
+              { label: "CEO", value: "Chiaki Katagiri" },
               { label: "Business", value: "Startup Investment Matching, Business Consulting" },
             ].map((item, index) => (
               <motion.div

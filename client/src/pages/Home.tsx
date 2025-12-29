@@ -130,7 +130,7 @@ export default function Home() {
               <motion.button
                 key={link.href}
                 onClick={() => handleNavigation(link.href)}
-                className="text-sm font-medium text-primary hover:text-accent transition-colors relative group"
+                className="text-sm font-medium text-white hover:text-accent transition-colors relative group"
                 whileHover={{ y: -2 }}
               >
                 {link.label}
@@ -151,7 +151,7 @@ export default function Home() {
             </MotionInView>
             
             <MotionInView intensity="medium" direction="horizontal" delay={0.3}>
-              <h1 className="text-5xl md:text-7xl font-heading font-bold text-primary mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">
                 Connect <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Innovation</span>
               </h1>
