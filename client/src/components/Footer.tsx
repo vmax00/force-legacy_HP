@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { Linkedin, Twitter, Instagram, Facebook } from "lucide-react";
 
 const handleLinkClick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -41,11 +42,56 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/50">
-          <p>&copy; {new Date().getFullYear()} Force Legacy Inc. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+        <div className="mt-16 pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+            <p className="text-sm text-primary-foreground/50">&copy; {new Date().getFullYear()} Force Legacy Inc. All rights reserved.</p>
+            <div className="flex gap-6 text-sm">
+              <a href="#" className="text-primary-foreground/70 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="text-primary-foreground/70 hover:text-white transition-colors">Terms of Service</a>
+            </div>
+          </div>
+          
+          <div className="flex justify-center gap-6 pt-8 border-t border-white/10">
+            <motion.a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-foreground/70 hover:text-white transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Linkedin className="w-5 h-5" />
+            </motion.a>
+            <motion.a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-foreground/70 hover:text-white transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Twitter className="w-5 h-5" />
+            </motion.a>
+            <motion.a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-foreground/70 hover:text-white transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Instagram className="w-5 h-5" />
+            </motion.a>
+            <motion.a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-foreground/70 hover:text-white transition-colors"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Facebook className="w-5 h-5" />
+            </motion.a>
           </div>
         </div>
       </div>

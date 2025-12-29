@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { pageTransition, fadeInUp, staggerContainer, EASE_OUT, DURATION, DISTANCE } from "@/lib/motion";
 import MotionInView from "@/components/MotionInView";
 import { Button } from "@/components/ui/button";
@@ -166,7 +166,7 @@ export function AboutPage() {
         </MotionInView>
 
         <MotionInView intensity="medium" direction="vertical">
-          <h3 className="text-2xl font-heading font-bold mb-6">Location</h3>
+          <h3 className="text-2xl font-heading font-bold mb-6">Location & Access</h3>
           <div className="w-full h-96 rounded-lg overflow-hidden border border-border">
             <iframe
               width="100%"
@@ -175,12 +175,33 @@ export function AboutPage() {
               loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8235467890123!2d139.77777!3d35.66777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0e0e0e0e0d%3A0x0!2sForce%20Legacy%20Inc.!5e0!3m2!1sja!2sjp!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.82354!2d139.77820!3d35.66777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0e0e0e0e0d%3A0x0!2z5pil5pil6YeO5bGx5piO5Y2X5Lil5pil5piO!5e0!3m2!1sja!2sjp!4v1640000000000"
             />
           </div>
-          <p className="text-muted-foreground mt-4 text-center">
-            東京都中央区日本橋箱崎町1-11
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="bg-card p-6 border border-border rounded-lg"
+            >
+              <h4 className="font-bold text-primary mb-4">Address</h4>
+              <p className="text-muted-foreground">東京都中央区日本橋箱崎町1-11</p>
+              <p className="text-sm text-muted-foreground mt-2">Tel: 03-6206-0540</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-card p-6 border border-border rounded-lg"
+            >
+              <h4 className="font-bold text-primary mb-4">Business Hours</h4>
+              <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 6:00 PM</p>
+              <p className="text-muted-foreground">Saturday, Sunday, Holidays: Closed</p>
+            </motion.div>
+          </div>
         </MotionInView>
       </div>
     </PageLayout>
@@ -243,6 +264,24 @@ export function FAQPage() {
 }
 
 export function ContactPage() {
+  const [formData, setFormData] = React.useState({ name: "", email: "", subject: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      // フォーム送信ロジック（実装時はバックエンド連携）
+      console.log("Form submitted:", formData);
+      alert("お問い合わせありがとうございます。確認後、ご連絡させていただきます。");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <PageLayout title="Contact" subtitle="お問い合わせ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -292,37 +331,67 @@ export function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: DURATION.MEDIUM }}
             viewport={{ once: true }}
+            onSubmit={handleSubmit}
           >
             <div className="space-y-2">
               <label className="text-sm font-bold text-primary">Name</label>
               <motion.div whileHover={{ scale: 1.02 }}>
-                <Input placeholder="Your Name" className="bg-background" />
+                <Input 
+                  placeholder="Your Name" 
+                  className="bg-background" 
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                />
               </motion.div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-primary">Email</label>
               <motion.div whileHover={{ scale: 1.02 }}>
-                <Input type="email" placeholder="your@email.com" className="bg-background" />
+                <Input 
+                  type="email" 
+                  placeholder="your@email.com" 
+                  className="bg-background" 
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                />
               </motion.div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-primary">Subject</label>
               <motion.div whileHover={{ scale: 1.02 }}>
-                <Input placeholder="Inquiry about..." className="bg-background" />
+                <Input 
+                  placeholder="Inquiry about..." 
+                  className="bg-background" 
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  required
+                />
               </motion.div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-bold text-primary">Message</label>
               <motion.div whileHover={{ scale: 1.02 }}>
-                <Textarea placeholder="Your message here..." className="bg-background min-h-[150px]" />
+                <Textarea 
+                  placeholder="Your message here..." 
+                  className="bg-background min-h-[150px]" 
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                />
               </motion.div>
             </div>
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 font-bold tracking-wide">
-                Send Message
+              <Button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-12 font-bold tracking-wide disabled:opacity-50"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </motion.div>
           </motion.form>
