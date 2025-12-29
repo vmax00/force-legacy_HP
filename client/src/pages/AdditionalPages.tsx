@@ -164,6 +164,24 @@ export function AboutPage() {
             ))}
           </div>
         </MotionInView>
+
+        <MotionInView intensity="medium" direction="vertical">
+          <h3 className="text-2xl font-heading font-bold mb-6">Location</h3>
+          <div className="w-full h-96 rounded-lg overflow-hidden border border-border">
+            <iframe
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8235467890123!2d139.77777!3d35.66777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c0e0e0e0e0d%3A0x0!2sForce%20Legacy%20Inc.!5e0!3m2!1sja!2sjp!4v1234567890"
+            />
+          </div>
+          <p className="text-muted-foreground mt-4 text-center">
+            東京都中央区日本橋箱崎町1-11
+          </p>
+        </MotionInView>
       </div>
     </PageLayout>
   );
