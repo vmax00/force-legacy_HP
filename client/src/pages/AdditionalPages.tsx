@@ -198,7 +198,7 @@ export function AboutPage() {
               className="bg-card p-6 border border-border rounded-lg"
             >
               <h4 className="font-bold text-primary mb-4">Business Hours</h4>
-              <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 6:00 PM</p>
+              <p className="text-muted-foreground">Monday - Friday: 10:00 AM - 6:00 PM</p>
               <p className="text-muted-foreground">Saturday, Sunday, Holidays: Closed</p>
             </motion.div>
           </div>
