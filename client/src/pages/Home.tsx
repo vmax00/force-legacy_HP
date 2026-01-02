@@ -121,29 +121,22 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           {/* PC Navigation - Horizontal */}
           <motion.nav 
-            className="hidden md:flex absolute top-8 left-8 items-center gap-12 z-50"
+            className="hidden md:flex absolute top-8 left-1/2 -translate-x-1/2 gap-8 z-50"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <img 
-              src="/images/logo.jpg" 
-              alt="Force Legacy Logo" 
-              className="h-12 w-auto"
-            />
-            <div className="flex gap-8">
-              {navLinks.map((link) => (
-                <motion.button
-                  key={link.href}
-                  onClick={() => handleNavigation(link.href)}
-                  className="text-sm font-medium text-white hover:text-accent transition-colors relative group"
-                  whileHover={{ y: -2 }}
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
-                </motion.button>
-              ))}
-            </div>
+            {navLinks.map((link) => (
+              <motion.button
+                key={link.href}
+                onClick={() => handleNavigation(link.href)}
+                className="text-sm font-medium text-white hover:text-accent transition-colors relative group"
+                whileHover={{ y: -2 }}
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
+              </motion.button>
+            ))}
           </motion.nav>
 
           <div className="max-w-3xl">
