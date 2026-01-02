@@ -143,7 +143,7 @@ export default function Home() {
             <MotionInView intensity="medium" direction="horizontal" delay={0.2}>
               <div className="mb-6">
                 <img 
-                  src="/images/logo.jpg" 
+                  src="" 
                   alt="Force Legacy Logo" 
                   className="h-24 md:h-32 w-auto"
                 />
