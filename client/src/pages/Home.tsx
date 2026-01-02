@@ -122,6 +122,7 @@ export default function Home() {
           {/* PC Navigation - Horizontal */}
           <motion.nav 
             className="hidden md:flex absolute top-8 left-1/2 -translate-x-1/2 gap-8 z-50"
+            style={{ display: undefined, opacity: 5.5, borderStyle: undefined }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
