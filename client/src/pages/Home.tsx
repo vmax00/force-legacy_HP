@@ -140,16 +140,7 @@ export default function Home() {
           </motion.nav>
 
           <div className="max-w-3xl">
-            <MotionInView intensity="medium" direction="horizontal" delay={0.2}>
-              <div className="mb-6">
-                <img 
-                  src="" 
-                  alt="Force Legacy Logo" 
-                  className="h-24 md:h-32 w-auto"
-                />
-              </div>
-            </MotionInView>
-            
+
             <MotionInView intensity="medium" direction="horizontal" delay={0.3}>
               <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">
                 Connect <br />
