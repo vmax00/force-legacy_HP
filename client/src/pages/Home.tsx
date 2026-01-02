@@ -33,49 +33,75 @@ export default function Home() {
       exit="exit"
       variants={pageTransition}
     >
-      {/* Mobile Menu */}
+      {/* Fixed Header - Navbar Style */}
       <motion.header 
-        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border md:hidden"
+        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: EASE_OUT }}
       >
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-heading font-bold tracking-tighter text-primary">
-            FORCE LEGACY
+          <Link href="/" className="flex items-center" onClick={() => {
+            setIsOpen(false);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}>
+            <img 
+              src="/images/logo.jpg" 
+              alt="Force Legacy Logo" 
+              className="h-16 w-auto"
+            />
           </Link>
-          <motion.button 
-            className="p-2 text-primary"
-            onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.95 }}
-          >
-            <AnimatePresence mode="wait">
-              {isOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="w-6 h-6" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="w-6 h-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
+
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavigation(link.href)}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary relative group",
+                  "text-muted-foreground"
+                )}
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full opacity-0 group-hover:opacity-100" />
+              </button>
+            ))}
+          </nav>
+
+          <div className="md:hidden">
+            <motion.button 
+              className="p-2 text-primary"
+              onClick={() => setIsOpen(!isOpen)}
+              whileTap={{ scale: 0.95 }}
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-6 h-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-6 h-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -83,7 +109,7 @@ export default function Home() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3, ease: EASE_OUT }}
-              className="bg-background border-b border-border overflow-hidden"
+              className="md:hidden bg-background border-b border-border overflow-hidden"
             >
               <nav className="flex flex-col p-4 space-y-2">
                 {navLinks.map((link, index) => (
@@ -95,7 +121,10 @@ export default function Home() {
                   >
                     <button
                       onClick={() => handleNavigation(link.href)}
-                      className="block w-full text-left px-4 py-3 rounded-lg transition-colors font-medium text-muted-foreground hover:bg-accent/10 hover:text-primary"
+                      className={cn(
+                        "block w-full text-left px-4 py-3 rounded-lg transition-colors font-medium",
+                        "text-muted-foreground hover:bg-accent/10 hover:text-primary"
+                      )}
                     >
                       {link.label}
                     </button>
@@ -108,7 +137,7 @@ export default function Home() {
       </motion.header>
 
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] flex items-center overflow-hidden pt-20 md:pt-0">
+      <section className="relative min-h-[100vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/hero-main.png" 
@@ -119,27 +148,6 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          {/* PC Navigation - Horizontal */}
-          <motion.nav 
-            className="hidden md:flex absolute top-8 left-1/2 -translate-x-1/2 gap-8 z-50"
-            style={{ display: undefined, opacity: 5.5, borderStyle: undefined }}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            {navLinks.map((link) => (
-              <motion.button
-                key={link.href}
-                onClick={() => handleNavigation(link.href)}
-                className="text-sm font-medium text-white hover:text-accent transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
-                {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
-              </motion.button>
-            ))}
-          </motion.nav>
-
           <div className="max-w-3xl">
 
             <MotionInView intensity="medium" direction="horizontal" delay={0.3}>
