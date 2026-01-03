@@ -40,7 +40,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center" onClick={handleNavClick}>
           <img 
-            src="/images/logo.jpg" 
+            src="/images/logo.png" 
             alt="Force Legacy Logo" 
             className="h-16 w-auto"
           />

@@ -46,7 +46,7 @@ export default function Home() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}>
             <img 
-              src="/images/logo.jpg" 
+              src="/images/logo.png" 
               alt="Force Legacy Logo" 
               className="h-16 w-auto"
             />
