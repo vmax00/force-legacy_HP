@@ -145,11 +145,11 @@ export function AboutPage() {
           <h3 className="text-2xl font-heading font-bold mb-6">Company Profile</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 border-t border-border pt-8">
             {[
-              { label: "Company Name", value: "Force Legacy Inc." },
-              { label: "Established", value: "April 1, 2024" },
-              { label: "Headquarters", value: "東京都中央区日本橋箱崎町1-11" },
-              { label: "CEO", value: "Chiaki Katagiri" },
-              { label: "Business", value: "Startup Investment Matching, Business Consulting" },
+              { label: "会社名", value: "株式会社Force Legacy" },
+              { label: "設立年月日", value: "2002年12月3日" },
+              { label: "本部", value: "東京都中央区日本橋箱崎町1-11" },
+              { label: "代表", value: "片桐 千秋" },
+              { label: "業務内容", value: "スタートアップと投資家コンサルティングプラットフォーム運営、ビジネスコンサルティング" },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -186,7 +186,7 @@ export function AboutPage() {
               viewport={{ once: true }}
               className="bg-card p-6 border border-border rounded-lg"
             >
-              <h4 className="font-bold text-primary mb-4">Address</h4>
+              <h4 className="font-bold text-primary mb-4">住所</h4>
               <p className="text-muted-foreground">東京都中央区日本橋箱崎町1-11</p>
               <p className="text-sm text-muted-foreground mt-2">Tel: 03-6206-0540</p>
             </motion.div>
@@ -197,9 +197,9 @@ export function AboutPage() {
               viewport={{ once: true }}
               className="bg-card p-6 border border-border rounded-lg"
             >
-              <h4 className="font-bold text-primary mb-4">Business Hours</h4>
-              <p className="text-muted-foreground">Monday - Friday: 10:00 AM - 6:00 PM</p>
-              <p className="text-muted-foreground">Saturday, Sunday, Holidays: Closed</p>
+              <h4 className="font-bold text-primary mb-4">営業時間</h4>
+              <p className="text-muted-foreground">月〜金: 10:00 AM - 6:00 PM</p>
+              <p className="text-muted-foreground">土日祝日: 休業</p>
             </motion.div>
           </div>
         </MotionInView>
