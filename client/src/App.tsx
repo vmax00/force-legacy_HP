@@ -11,7 +11,6 @@ import { ProcessPage, AboutPage, FAQPage, ContactPage } from "./pages/Additional
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { AnimatePresence } from "framer-motion";
-
 function Router() {
   const [location] = useLocation();
   
