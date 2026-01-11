@@ -157,9 +157,13 @@ export default function Home() {
           <div className="max-w-3xl">
 
             <MotionInView intensity="medium" direction="horizontal" delay={0.3}>
-              <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight" style={{
+                textShadow: '0 4px 12px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(255, 255, 255, 0.3)'
+              }}>
                 Connect <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Innovation</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" style={{
+                  textShadow: '0 4px 12px rgba(0, 0, 0, 0.8)'
+                }}>Innovation</span>
               </h1>
             </MotionInView>
             
