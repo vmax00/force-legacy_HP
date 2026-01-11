@@ -145,7 +145,7 @@ export default function Home() {
       <section className="relative min-h-[100vh] flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/hero-main.png" 
+            src="/images/hero-main.jpg" 
             alt="Force Legacy Background" 
             className="w-full h-full object-cover"
           />
