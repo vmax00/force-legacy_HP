@@ -147,7 +147,8 @@ export default function Home() {
           <img 
             src="/images/hero-main.jpg" 
             alt="Force Legacy Background" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center" 
+            style={{ objectPosition: 'center 20%' }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-transparent" />
         </div>
