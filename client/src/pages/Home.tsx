@@ -51,7 +51,7 @@ export default function Home() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}>
             <img 
-              src="/images/logo.png" 
+              src="/images/fl_logo.svg" 
               alt="Force Legacy Logo" 
               className="h-16 w-auto"
             />
@@ -157,13 +157,9 @@ export default function Home() {
           <div className="max-w-3xl">
 
             <MotionInView intensity="medium" direction="horizontal" delay={0.3}>
-              <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight" style={{
-                textShadow: '0 4px 12px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(255, 255, 255, 0.3)'
-              }}>
+              <h1 className="text-5xl md:text-7xl font-heading font-bold text-white mb-6 leading-tight">
                 Connect <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" style={{
-                  textShadow: '0 4px 12px rgba(0, 0, 0, 0.8)'
-                }}>Innovation</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Innovation</span>
               </h1>
             </MotionInView>
             
