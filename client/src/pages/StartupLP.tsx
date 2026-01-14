@@ -178,10 +178,10 @@ export default function StartupLP() {
             viewport={{ once: true, amount: 0.3 }}
           >
             {[
-              { label: "Total Investment", value: "$50M+" },
-              { label: "Startups Supported", value: "120+" },
-              { label: "Successful Exits", value: "15" },
-              { label: "Active Mentors", value: "40+" },
+              { label: "Total Investment", value: "49億円" },
+              { label: "Startups Supported", value: "340社" },
+              { label: "Successful Exits", value: "3件" },
+              { label: "Active Mentors", value: "230名" },
             ].map((stat, index) => (
               <motion.div 
                 key={index}
